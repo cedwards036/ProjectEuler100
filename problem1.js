@@ -13,12 +13,12 @@ by 5.
 **/
 
 function multiplesOf3and5(number) {
-  const threeMultiplesCount = Math.floor((number - 1) / 3)
-  const fiveMultiplesCount = Math.floor((number - 1) / 5)
-  const crossoverCount = Math.floor(fiveMultiplesCount / 3)
-  return sumOfOneToN(threeMultiplesCount) * 3 + sumOfOneToN(fiveMultiplesCount) * 5 - sumOfOneToN(crossoverCount) * 15
+  const threeMultiplesCount = Math.floor((number - 1) / 3);
+  const fiveMultiplesCount = Math.floor((number - 1) / 5);
+  const crossoverCount = Math.floor(fiveMultiplesCount / 3);
+  return sumOfOneToN(threeMultiplesCount) * 3 + sumOfOneToN(fiveMultiplesCount) * 5 - sumOfOneToN(crossoverCount) * 15;
 }
 
 function sumOfOneToN(n) {
-  return n * (n + 1) / 2
+  return n * (n + 1) / 2;
 }
