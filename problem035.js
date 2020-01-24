@@ -9,28 +9,13 @@ a noticable impact in the actual execution time. This
 algorithm generates primes using a standard sieve, then
 loops through those primes, rotating each one to see if
 its rotations are primes. It they are, it adds one to the
-total and moves on. 
+total and moves on.
 **/
 
 function circularPrimes(n) {
   const primes = generatePrimesUpTo(maxPossibleRotationValue(n));
   const primesUpToN = [...primes].filter(x => x < n);
-  let circularCount = 0;
-  primesUpToN.forEach(prime => {
-    const digitCount = getDigitCount(prime);
-    let curRotation = prime;
-    let isCircular = true;
-    for (let _ = 0; _ < digitCount; _++) {
-      curRotation = rotate(curRotation, digitCount);
-      if (!primes.has(curRotation)) {
-        isCircular = false;
-      }
-    }
-    if (isCircular) {
-      circularCount++;
-    }
-  });
-  return circularCount;
+  return primesUpToN.filter(prime => isCircular(prime, primes)).length;
 }
 
 function maxPossibleRotationValue(n) {
@@ -61,6 +46,19 @@ function setOfMultiplesOfTwoUpTo(n) {
     curNum += 2;
   }
   return multiplesOfTwo;
+}
+
+function isCircular(prime, primes) {
+  const digitCount = getDigitCount(prime);
+  let curRotation = prime;
+  let isCircular = true;
+  for (let _ = 0; _ < digitCount; _++) {
+    curRotation = rotate(curRotation, digitCount);
+    if (!primes.has(curRotation)) {
+      isCircular = false;
+    }
+  }
+  return isCircular;
 }
 
 function getDigitCount(num) {
