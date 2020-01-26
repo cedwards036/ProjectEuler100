@@ -3,13 +3,13 @@ PROBLEM 37 SOLUTION
 
 This algorithm generates potential primes (using
 the 6n +/- 1 rule to reduce the number of primes to
-check), and checks each one for whether they are circular.
+check), and checks each one for whether they are truncatable.
 To make things even faster, the algorithm automatically
 disqualifies any number with at least one even digit (other
 than 2) without checking it--if a number has an even digit
 then that digit will be in the one's place eventually, meaning
-that at least one rotation is not prime and the number is not
-circular. 
+that at least one truncation is not prime and the number is not
+truncatable. 
 **/
 
 function truncatablePrimes(n) {
